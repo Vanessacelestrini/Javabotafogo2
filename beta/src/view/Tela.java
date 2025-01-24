@@ -1,7 +1,6 @@
 package view;
 
 import java.util.Scanner;
-
 import model.Tarefa;
 
 public class Tela {
@@ -15,7 +14,7 @@ public class Tela {
 	   System.out.println("Digite a opção desejada:");
    }
 	
-	public void exibirInclusao( ) {
+	public Tarefa exibirInclusao( ) {
 		Scanner teclado = new Scanner(System.in);
 		Tarefa tarefa = new Tarefa();
 		
@@ -32,6 +31,8 @@ public class Tela {
 		} else {
 			tarefa.setFinalizada(false);
 		}
-		teclado.close();
+		
+		return tarefa;
+		
 	}
 }
