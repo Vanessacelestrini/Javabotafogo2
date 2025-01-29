@@ -1,6 +1,7 @@
 package view;
 
 import java.util.Scanner;
+
 import model.Tarefa;
 
 public class Tela {
@@ -32,7 +33,61 @@ public class Tela {
 			tarefa.setFinalizada(false);
 		}
 		
+		return tarefa;	
+	}
+	
+	public void exibirTarefa(Tarefa tarefa) {
+		System.out.println("C O N S U L T A");
+		System.out.println(tarefa);
+		System.out.println("------------------------------");
+		
+	}
+	
+	public Tarefa exibirAlteracao(Tarefa tarefa) {
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println("A L T E R A Ç Ã O");
+        System.out.println("Selecione o que deseja alterar:");
+        System.out.println("1 - Descrição");
+        System.out.println("2 - Prazo");
+        System.out.println("3 - Status");
+        System.out.println("Digite a opção desejada:");
+       
+        int opcao = teclado.nextInt();
+        teclado.nextLine(); 
+
+        if (opcao == 1) {
+            System.out.println("Nova Descrição: ");
+            tarefa.setDescricao(teclado.nextLine());
+        } else if (opcao == 2) {
+            System.out.println("Novo Prazo: ");
+            tarefa.setPrazo(teclado.nextInt());
+        } else if (opcao == 3) {
+            System.out.println("Finalizada (S/N)? ");
+            String status = teclado.next();
+           
+            if (status.equals("S") || status.equals("s")) {
+                tarefa.setFinalizada(true);
+            } else {
+                tarefa.setFinalizada(false);
+            }
+        } else {
+            System.out.println("Opção inválida.");
+        }
+
+        return tarefa;
+    }
+	
+	public Tarefa exibirExclusao(Tarefa tarefa) {
+		tarefa.setDescricao("");
+		tarefa.setFinalizada(false);
+		tarefa.setPrazo(0);
+		System.out.println("Alterção");
+		
 		return tarefa;
 		
 	}
 }
+
+
+
